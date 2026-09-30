@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculadora web con operaciones básicas e historial persistente.">
+  <title>Calculadora web</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121724'/%3E%3Cpath d='M17 16h30v32H17z' fill='%23202a3b' stroke='%237c9cff' stroke-width='3'/%3E%3Cpath d='M23 23h18M24 33h4m8 0h4m-16 8h4m8 0h4' stroke='%23f5f7ff' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="calculator-card" aria-labelledby="calculator-title">
+      <header class="card-header">
+        <div>
+          <p class="eyebrow">Herramienta de cálculo</p>
+          <h1 id="calculator-title">Calculadora</h1>
+        </div>
+        <span class="keyboard-hint" title="También puedes usar tu teclado">⌨ Teclado activo</span>
+      </header>
+
+      <div class="display" aria-live="polite" aria-atomic="true">
+        <p id="expression" class="expression">Listo para calcular</p>
+        <output id="result" class="result" aria-label="Resultado">0</output>
+      </div>
+
+      <div class="keypad" id="keypad" aria-label="Teclado de la calculadora">
+        <button class="key key--utility" type="button" data-action="clear" aria-label="Limpiar todo">C</button>
+        <button class="key key--utility" type="button" data-action="delete" aria-label="Borrar último dígito">⌫</button>
+        <button class="key key--operator" type="button" data-value="/" aria-label="Dividir">÷</button>
+        <button class="key key--operator" type="button" data-value="*" aria-label="Multiplicar">×</button>
+
+        <button class="key" type="button" data-value="7">7</button>
+        <button class="key" type="button" data-value="8">8</button>
+        <button class="key" type="button" data-value="9">9</button>
+        <button class="key key--operator" type="button" data-value="-" aria-label="Restar">−</button>
+
+        <button class="key" type="button" data-value="4">4</button>
+        <button class="key" type="button" data-value="5">5</button>
+        <button class="key" type="button" data-value="6">6</button>
+        <button class="key key--operator" type="button" data-value="+" aria-label="Sumar">+</button>
+
+        <button class="key" type="button" data-value="1">1</button>
+        <button class="key" type="button" data-value="2">2</button>
+        <button class="key" type="button" data-value="3">3</button>
+        <button class="key key--equals" type="button" data-action="equals" aria-label="Calcular resultado">=</button>
+
+        <button class="key key--zero" type="button" data-value="0">0</button>
+        <button class="key" type="button" data-value=".">.</button>
+      </div>
+    </section>
+
+    <aside class="history-card" aria-labelledby="history-title">
+      <header class="history-header">
+        <div>
+          <p class="eyebrow">Guardado automáticamente</p>
+          <h2 id="history-title">Historial</h2>
+        </div>
+        <button id="clear-history" class="clear-history" type="button">Borrar historial</button>
+      </header>
+
+      <ol id="history-list" class="history-list" aria-live="polite"></ol>
+
+      <div id="empty-history" class="empty-history">
+        <span aria-hidden="true">≡</span>
+        <p>Aún no hay operaciones</p>
+        <small>Los cálculos aparecerán aquí.</small>
+      </div>
+    </aside>
+  </main>
+
+  <footer>Los datos permanecen guardados en este navegador.</footer>
+  <script src="script.js"></script>
+</body>
+</html>
